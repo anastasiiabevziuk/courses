@@ -1,0 +1,33 @@
+{% extends "base.html" %} 
+
+{% block title %} Courses {% endblock %} 
+
+{% block content %}
+  <table class="table mt-5 table-bordered table-striped table-hover table-dark">
+    <thead class="table-dark">
+      <tr>
+        <th>Title</th>
+        <th>Category</th>
+        <th>Price</th>
+        <th>Students Quantity</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for course in courses %}
+      <tr>
+        <td>
+          <a href={% url "single_course" course.id%} class="link-light">
+          {{ course.title }}
+          </a>
+        </td>
+        <td>{{ course.category }}</td>
+        <td>{{ course.price }}</td>
+        <td>{{ course.students_qty }}</td>
+        <td><button class="btn btn-outline-light">Buy</button></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endblock %}
+</dic>
