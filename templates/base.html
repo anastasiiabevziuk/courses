@@ -18,12 +18,19 @@
         <span class="navbar-text">
           <a href="/admin/" class="me-3" target="_blank">Admin</a>
           <a href="/api/v1/" class="me-3" target="_blank">API</a>
-          <a href="/user/login/" class="me-3" target="_blank">LogIn</a>
-          <a href="/user/profile/" class="me-3" target="_blank">Profile</a>
+         
+          {% if user.is_active %}
+            <a href="{% url "profile" %}" class="me-3" target="_blank">Profile</a>
+            <a href="{% url "logout" %}" class="me-3" target="_blank">LogOut</a>
+          {% else %}
+            <a href="/user/login/" class="me-3" target="_blank">LogIn</a>
+          {% endif %}
+
           <a href="#" class="me-3" >
             <img src="https://d3sxshmncs10te.cloudfront.net/icon/premium/png-512/1624076.png?token=eyJhbGciOiJoczI1NiIsImtpZCI6ImRlZmF1bHQifQ__.eyJpc3MiOiJkM3N4c2htbmNzMTB0ZS5jbG91ZGZyb250Lm5ldCIsImV4cCI6MTcxNzE2OTE5OCwicSI6bnVsbCwiaWF0IjoxNzE2OTA5OTk4fQ__.b27ed91a97b8b387ab78221555237b786c38b7cb17c894ff84ba263f81d41713" 
             alt="basket" class="rounded-circle img-fluid" style="width: 25px;">
           </a>
+         
       </span>
       </div>
     </nav>
