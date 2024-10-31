@@ -4,8 +4,8 @@ from django.shortcuts import redirect, render
 from django.contrib import auth
 from django.urls import reverse
 from users.forms import UserLoginForm, UserRegistrationForm, ProfileForm
+from carts.models import Cart
 
-# Create your views here.
 
 def login(request):
     if request.method == 'POST':
@@ -45,7 +45,12 @@ def registration(request):
 
 
 def user_cart(request):
-    return render(request, "users/cart.html", )
+    carts = Cart.objects.all()
+    cart_sum  = sum(cart.quantity* cart.price for cart in carts)
+    sum_quantity = sum(cart.quantity for cart in carts)
+    for product in carts:
+        product.total_price = product.price * product.quantity
+    return render(request, "users/cart.html", {"carts": carts, "cart_sum":cart_sum, "sum_quantity":sum_quantity})
 
 @login_required
 def profile(request):

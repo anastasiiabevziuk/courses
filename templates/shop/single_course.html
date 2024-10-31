@@ -12,7 +12,7 @@
       <h5 class="card-title">{{ course.title }}</h5>
       <p class="card-text">Price: {{ course.price }}</p>
       <p class="card-text">Students Quantity: {{ course.students_qty }}</p>
-      <button class="btn btn-outline-light">Buy</button>
+      <a href={% url "cart_add" course.id%} class="btn btn-outline-light" role="button" > Buy</a>
     </div>
   </div>
 

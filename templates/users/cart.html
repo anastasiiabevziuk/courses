@@ -13,40 +13,41 @@
   
               <div class="row">
                 <a href="/" class="text-white-50 fw-bold">Back to shopping</a>
-                <div class="col-lg-6 px-5 py-4">
-  
-                  <h3 class="mb-5 pt-2 text-center fw-bold text-uppercase">Your products</h3>
-  
-                  <div class="d-flex align-items-center mb-5">
-    
-                    <div class="flex-grow-1 ms-3">
-                      <a href="#!" class="float-end"><i class="fas fa-times"></i></a>
-                      <h5 >Courses</h5>
-                      <div class="d-flex align-items-center justify-content-between">
-                        <p class="fw-bold mb-0 me-5 pe-3">799$</p>
-                      
-                        <div class="col-md-1 col-lg-1 col-xl-1 d-flex ">
-                     
-    
-                          <input id="form1" min="0" name="quantity" value="1" type="number"
-                            class="form-control form-control-sm" />
-    
 
-                        </div>
-                        <div class="col-md-1 col-lg-1 col-xl-1 text-end">
-                         x
-                        </div>
-                      </div>
-                    </div>
+                <div class="col-lg-6 px-5 py-4">
+                
+                  <h3 class="mb-5 pt-2 text-center fw-bold text-uppercase"> Courses</h3>
+                  
+                  <div class="d-flex align-items-center mb-5" >
+                    <table class="table table-hover table-dark ">
+                      <tbody>
+                        {% for cart in carts %}
+                        <tr>
+                          <td> {{cart.title}}</td>
+                          <td> {{cart.price}}</td>
+                          <td> x </td>
+                          <td> {{cart.quantity}} </td>
+                          <td>=</td>
+                          <td>{{cart.total_price}}</td>
+                          <td>
+                            <a href={% url "cart_remove" cart.id%} >
+                              <img src="https://e7.pngegg.com/pngimages/228/54/png-clipart-logo-trademark-brand-delete-button-miscellaneous-text.png"
+                              alt="delete" class="rounded-circle img-fluid" style="width: 45px;">
+                            </a>
+                          </td>
+                        </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
                   </div>
-  
+                  
                   <hr class="mb-4" style="height: 2px; background-color: #1266f1; opacity: 1;">
 
                   <div class="d-flex justify-content-between p-2 mb-2 fw-bold bg-secondary rounded" >
                     <h5 class="fw-bold mb-0">Total:</h5>
-                    <h5 class="fw-bold mb-0">2261$</h5>
+                    <h5 class="fw-bold mb-0">{{cart_sum}}$</h5>
                   </div>
-            
+                
                 </div>
 
                 <div class="col-lg-6 px-5 py-4">
