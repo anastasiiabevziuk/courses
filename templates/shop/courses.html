@@ -24,7 +24,7 @@
         <td>{{ course.category }}</td>
         <td>{{ course.price }}</td>
         <td>{{ course.students_qty }}</td>
-        <td> <a href={% url "cart_add" course.id%} class="btn btn-outline-light" role="button" > Buy</a></td>
+        <td> <a href={% url "cart_add" course.id%} class="btn btn-outline-light" style="" role="button" > Buy</a></td>
       </tr>
       {% endfor %}
     </tbody>
